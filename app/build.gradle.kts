@@ -9,7 +9,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.comp2000"
+        applicationId = "uk.ac.plymouth.liam.catlin.comp2000"
         minSdk = 29
         targetSdk = 36
         versionCode = 1

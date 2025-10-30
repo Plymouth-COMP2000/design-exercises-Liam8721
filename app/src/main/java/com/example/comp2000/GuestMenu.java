@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Spinner;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,10 +58,27 @@ public class GuestMenu extends Fragment {
         }
     }
 
+    private ArrayList<MenuItem> testMainsItems() {
+        ArrayList<MenuItem> testItems = new ArrayList<>();
+        testItems.add(new MenuItem("Mains", 0.0F, null));
+        testItems.add(new MenuItem("Pizza", 10.99F, null));
+        testItems.add(new MenuItem("Pasta", 12.99F, null));
+        testItems.add(new MenuItem("Salad", 8.99F, null));
+        return testItems;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_guest_menu, container, false);
+        View view = inflater.inflate(R.layout.fragment_guest_menu, container, false);
+
+        Spinner mainsSpinner = view.findViewById(R.id.spinner);
+        MenuItemAdapter adapter = new MenuItemAdapter(requireContext(), testMainsItems());
+        mainsSpinner.setAdapter(adapter);
+        mainsSpinner.setPrompt("Mains");
+        mainsSpinner.setOnItemSelectedListener(null);
+
+
+        return view;
     }
 }

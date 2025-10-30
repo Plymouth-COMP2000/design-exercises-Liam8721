@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navgraph"
-    app:startDestination="@id/myBookings">
+    app:startDestination="@id/guestMenu">
 
     <fragment
         android:id="@+id/login"
@@ -27,5 +27,14 @@
         android:id="@+id/myBookings"
         android:name="com.example.comp2000.MyBookings"
         android:label="fragment_my_bookings"
-        tools:layout="@layout/fragment_my_bookings" />
+        tools:layout="@layout/fragment_my_bookings" >
+        <action
+            android:id="@+id/action_myBookings_to_guestMenu"
+            app:destination="@id/guestMenu" />
+    </fragment>
+    <fragment
+        android:id="@+id/guestMenu"
+        android:name="com.example.comp2000.GuestMenu"
+        android:label="fragment_guest_menu"
+        tools:layout="@layout/fragment_guest_menu" />
 </navigation>
