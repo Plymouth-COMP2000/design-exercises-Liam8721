@@ -13,6 +13,30 @@
         <item>Party</item>
         <item>Notes</item>
     </string-array>
-    
+
+    <string-array name="BookingParty">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+
+    <string-array name="GuestBookingDate">
+        <item>Today</item>
+        <item>Tomorrow</item>
+        <item>Next Week</item>
+    </string-array>
+
+    <string-array name="GuestBookingTime">
+        <item>12 20</item>
+        <item>13 00</item>
+        <item>14 00</item>
+    </string-array>
+
+
     <string-array name="Starter"></string-array>
 </resources>
