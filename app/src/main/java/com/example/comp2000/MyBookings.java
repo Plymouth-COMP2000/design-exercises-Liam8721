@@ -3,20 +3,17 @@ package com.example.comp2000;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-import androidx.navigation.Navigator;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Login#newInstance} factory method to
+ * Use the {@link MyBookings#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Login extends Fragment {
+public class MyBookings extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,7 +24,7 @@ public class Login extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Login() {
+    public MyBookings() {
         // Required empty public constructor
     }
 
@@ -37,11 +34,11 @@ public class Login extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Login.
+     * @return A new instance of fragment MyBookings.
      */
     // TODO: Rename and change types and number of parameters
-    public static Login newInstance(String param1, String param2) {
-        Login fragment = new Login();
+    public static MyBookings newInstance(String param1, String param2) {
+        MyBookings fragment = new MyBookings();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -62,13 +59,6 @@ public class Login extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-        View view =  inflater.inflate(R.layout.fragment_login, container, false);
-        Button login = view.findViewById(R.id.loginB);
-
-        login.setOnClickListener( l -> {
-            Navigation.findNavController(l).navigate(R.id.action_login_to_guestHome2);
-        });
-        return view;
+        return inflater.inflate(R.layout.fragment_my_bookings, container, false);
     }
 }
