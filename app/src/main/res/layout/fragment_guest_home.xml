@@ -14,7 +14,7 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/GuestMenuButton"
         android:layout_width="0dp"
         android:layout_height="78dp"
         android:layout_marginStart="16dp"
@@ -24,10 +24,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline" />
+        app:layout_constraintTop_toTopOf="@id/guideline"
+        style="@style/MyButtonStyle" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/GuestBookTableButton"
         android:layout_width="0dp"
         android:layout_height="78dp"
         android:layout_marginStart="16dp"
@@ -36,10 +37,13 @@
         android:text="@string/book_a_table"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/GuestMenuButton"
+        style="@style/MyButtonStyle"
+        android:backgroundTint="@color/yellow_accent"
+        android:textColor="@color/text_dark" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/GuestViewBookingsButton"
         android:layout_width="0dp"
         android:layout_height="78dp"
         android:layout_marginStart="16dp"
@@ -48,6 +52,17 @@
         android:text="@string/view_bookings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/GuestBookTableButton"
+        style="@style/MyButtonStyle" />
+
+    <ImageView
+        android:id="@+id/myIcon"
+        android:layout_width="169dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="136dp"
+        android:src="@drawable/ic_burger_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
