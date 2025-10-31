@@ -3,13 +3,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- Brand Colors -->
     <color name="red_primary">#D32F2F</color>         <!-- Deep red -->
     <color name="yellow_accent">#F9A825</color>       <!-- Warm yellow -->
     <color name="background_white">#FFFFFF</color>    <!-- Clean white -->
     <color name="text_dark">#212121</color>           <!-- Dark grey for text -->
 
-    <!-- Optional lighter shades -->
     <color name="red_light">#F44336</color>
     <color name="yellow_light">#FFEB3B</color>
 

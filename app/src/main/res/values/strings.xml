@@ -7,11 +7,19 @@
     <string name="book_a_table">Book a Table</string>
 
     <string-array name="Table5">
-        <item>Date, Time</item>
-        <item>Name</item>
-        <item>Phone</item>
-        <item>Party</item>
-        <item>Notes</item>
+        <item>15/12/2025, 13 00</item>
+        <item>Name: Daniel</item>
+        <item>Contact: 07402399138</item>
+        <item>Party Size: 6</item>
+        <item>Additional Notes: Allergic to Nuts</item>
+    </string-array>
+
+    <string-array name="Table6">
+        <item>12/12/2025, 13 00</item>
+        <item>Name: Daniel</item>
+        <item>Contact: 07402399138</item>
+        <item>Party Size: 6</item>
+        <item>Additional Notes: Lactose Intolerant</item>
     </string-array>
 
     <string-array name="BookingParty">

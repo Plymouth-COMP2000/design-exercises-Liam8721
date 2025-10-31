@@ -7,61 +7,81 @@
     android:layout_height="match_parent"
     tools:context=".MyBookings">
 
-    <Spinner
-        android:id="@+id/spbooking"
-        android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="8dp"
-        android:entries="@array/Table5"
-        app:layout_constraintEnd_toEndOf="@+id/spbooking2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/spbooking2"
-        app:layout_constraintTop_toBottomOf="@+id/spbooking2" />
-
-    <Spinner
-        android:id="@+id/spbooking2"
-        android:layout_width="0dp"
-        android:layout_height="68dp"
-        android:layout_marginTop="232dp"
-        android:entries="@array/Table5"
-        app:layout_constraintEnd_toEndOf="@+id/MenuButton"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/back_button"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+    <ImageButton
+        android:id="@+id/GuestMyBookingsBackButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_back_button"
+        android:contentDescription="Back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="My Bookings"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="@color/red_primary"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="18sp"
+        android:autoSizeMaxTextSize="28sp"
+        android:autoSizeStepGranularity="2sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/GuestMyBookingsBackButton"
+        app:layout_constraintEnd_toStartOf="@id/menu_button"
+        app:layout_constraintBottom_toBottomOf="@id/GuestMyBookingsBackButton"
+        app:layout_constraintHorizontal_bias="0.5" />
 
     <ImageButton
-        android:id="@+id/back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:id="@+id/menu_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Back"
-        android:src="@drawable/ic_back_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/MenuButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Back"
         android:src="@drawable/ic_menu_button"
+        android:contentDescription="Menu"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/red_primary"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="8dp" />
+
+    <Spinner
+        android:id="@+id/GuestBookingExample1"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/spinner_dialog_background"
+        android:entries="@array/Table5"
+        android:spinnerMode="dialog"
+        android:gravity="center"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <Spinner
+        android:id="@+id/GuestBookingExample2"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/spinner_dialog_background"
+        android:entries="@array/Table6"
+        android:spinnerMode="dialog"
+        android:gravity="center"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GuestBookingExample1" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Button style (Material 2) -->
     <style name="MyButtonStyle" parent="Widget.MaterialComponents.Button">
         <item name="android:backgroundTint">@color/red_primary</item>
         <item name="android:textColor">@android:color/white</item>
@@ -10,7 +9,6 @@
         <item name="android:paddingVertical">12dp</item>
     </style>
 
-    <!-- TextView style -->
     <style name="MyTextViewStyle" parent="android:Widget.TextView">
         <item name="android:textColor">@color/text_dark</item>
         <item name="android:textSize">16sp</item>
