@@ -3,10 +3,12 @@ package com.example.comp2000;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -139,7 +141,11 @@ public class GuestMenu extends Fragment {
         SidesSpinner.setPrompt("Sides");
         SidesSpinner.setOnItemSelectedListener(null);
 
-
+        ImageButton GuestMenuBackIC = view.findViewById(R.id.GuestMenuBackIC);
+        GuestMenuBackIC.setOnClickListener(v -> {
+            // Handle book table click
+            Navigation.findNavController(v).navigate(R.id.action_guestMenu_to_guestHome);
+        });
 
 
         return view;

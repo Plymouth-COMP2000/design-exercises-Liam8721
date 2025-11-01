@@ -79,9 +79,9 @@ public class GuestHome extends Fragment {
         });
 
         GuestBookTableButton.setOnClickListener(v -> {
-                    // Handle book table click
-                    Navigation.findNavController(v).navigate(R.id.action_guestHome_to_guestMakeBooking);
-                });
+            // Handle book table click
+            Navigation.findNavController(v).navigate(R.id.action_guestHome_to_guestMakeBooking);
+        });
 
         GuestViewBookingsButton.setOnClickListener(v -> {
             // Handle view bookings

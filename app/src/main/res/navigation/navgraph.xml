@@ -34,17 +34,29 @@
         android:id="@+id/myBookings"
         android:name="com.example.comp2000.MyBookings"
         android:label="fragment_my_bookings"
-        tools:layout="@layout/fragment_my_bookings" />
+        tools:layout="@layout/fragment_my_bookings" >
+        <action
+            android:id="@+id/action_myBookings_to_guestHome"
+            app:destination="@id/guestHome" />
+    </fragment>
     <fragment
         android:id="@+id/guestMenu"
         android:name="com.example.comp2000.GuestMenu"
         android:label="fragment_guest_menu"
-        tools:layout="@layout/fragment_guest_menu" />
+        tools:layout="@layout/fragment_guest_menu" >
+        <action
+            android:id="@+id/action_guestMenu_to_guestHome"
+            app:destination="@id/guestHome" />
+    </fragment>
     <fragment
         android:id="@+id/guestMakeBooking"
         android:name="com.example.comp2000.GuestMakeBooking"
         android:label="fragment_guest_make_booking"
-        tools:layout="@layout/fragment_guest_make_booking" />
+        tools:layout="@layout/fragment_guest_make_booking" >
+        <action
+            android:id="@+id/action_guestMakeBooking_to_guestHome"
+            app:destination="@id/guestHome" />
+    </fragment>
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.example.comp2000.SignUpFragment"
