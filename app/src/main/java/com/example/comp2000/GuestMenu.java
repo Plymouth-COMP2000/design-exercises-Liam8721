@@ -58,6 +58,15 @@ public class GuestMenu extends Fragment {
         }
     }
 
+    private ArrayList<MenuItem> testStartersItems() {
+        ArrayList<MenuItem> testItems = new ArrayList<>();
+        testItems.add(new MenuItem("Starters", 0.0F, null));
+        testItems.add(new MenuItem("Salad", 8.99F, null));
+        testItems.add(new MenuItem("Soup", 6.99F, null));
+        testItems.add(new MenuItem("Toast", 3.99F, null));
+        return testItems;
+    }
+
     private ArrayList<MenuItem> testMainsItems() {
         ArrayList<MenuItem> testItems = new ArrayList<>();
         testItems.add(new MenuItem("Mains", 0.0F, null));
@@ -67,16 +76,70 @@ public class GuestMenu extends Fragment {
         return testItems;
     }
 
+    private ArrayList<MenuItem> testDessertsItems() {
+        ArrayList<MenuItem> testItems = new ArrayList<>();
+        testItems.add(new MenuItem("Desserts", 0.0F, null));
+        testItems.add(new MenuItem("Ice Cream", 4.99F, null));
+        testItems.add(new MenuItem("Pie", 5.99F, null));
+        testItems.add(new MenuItem("Cake", 6.99F, null));
+        return testItems;
+    }
+
+    private ArrayList<MenuItem> testDrinksItems() {
+        ArrayList<MenuItem> testItems = new ArrayList<>();
+        testItems.add(new MenuItem("Drinks", 0.0F, null));
+        testItems.add(new MenuItem("Soft Drinks", 2.99F, null));
+        testItems.add(new MenuItem("Water", 1.99F, null));
+        testItems.add(new MenuItem("Juice", 3.99F, null));
+        return testItems;
+    }
+
+    private ArrayList<MenuItem> testSidesItems() {
+        ArrayList<MenuItem> testItems = new ArrayList<>();
+        testItems.add(new MenuItem("Sides", 0.0F, null));
+        testItems.add(new MenuItem("Wings", 8.99F, null));
+        testItems.add(new MenuItem("Fruit", 6.99F, null));
+        testItems.add(new MenuItem("Cheese Sticks", 3.99F, null));
+        return testItems;
+    }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_guest_menu, container, false);
 
-        Spinner mainsSpinner = view.findViewById(R.id.spinner);
-        MenuItemAdapter adapter = new MenuItemAdapter(requireContext(), testMainsItems());
-        mainsSpinner.setAdapter(adapter);
-        mainsSpinner.setPrompt("Mains");
-        mainsSpinner.setOnItemSelectedListener(null);
+        Spinner StartersSpinner = view.findViewById(R.id.GuestMenuStarters);
+            MenuItemAdapter StarterItemAdapter = new MenuItemAdapter(requireContext(), testStartersItems());
+        StartersSpinner.setAdapter(StarterItemAdapter);
+        StartersSpinner.setPrompt("Starter");
+        StartersSpinner.setOnItemSelectedListener(null);
+
+        Spinner MainsSpinner = view.findViewById(R.id.GuestMenuMain);
+        MenuItemAdapter MainItemAdapter = new MenuItemAdapter(requireContext(), testMainsItems());
+        MainsSpinner.setAdapter(MainItemAdapter);
+        MainsSpinner.setPrompt("Mains");
+        MainsSpinner.setOnItemSelectedListener(null);
+        
+        Spinner DessertsSpinner = view.findViewById(R.id.GuestMenuDesserts);
+        MenuItemAdapter DessertsAdapter = new MenuItemAdapter(requireContext(), testDessertsItems());
+        DessertsSpinner.setAdapter(DessertsAdapter);
+        DessertsSpinner.setPrompt("Desserts");
+        DessertsSpinner.setOnItemSelectedListener(null);
+        
+        Spinner DrinksSpinner = view.findViewById(R.id.GuestMenuDrinks);
+        MenuItemAdapter DrinksAdapter = new MenuItemAdapter(requireContext(), testDrinksItems());
+        DrinksSpinner.setAdapter(DrinksAdapter);
+        DrinksSpinner.setPrompt("Drinks");
+        DrinksSpinner.setOnItemSelectedListener(null);
+        
+        Spinner SidesSpinner = view.findViewById(R.id.GuestMenuSides);
+        MenuItemAdapter SidesAdapter = new MenuItemAdapter(requireContext(), testSidesItems());
+        SidesSpinner.setAdapter(SidesAdapter);
+        SidesSpinner.setPrompt("Sides");
+        SidesSpinner.setOnItemSelectedListener(null);
+
+
 
 
         return view;

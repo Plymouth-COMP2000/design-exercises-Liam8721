@@ -1,13 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".GuestMenu">
-
-    <Spinner
-        android:id="@+id/spinner"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".GuestMenu">
+
+    <TextView
+        android:id="@+id/GuestMenuTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:spinnerMode="dialog" />
-</FrameLayout>
+        android:text="Menu"
+        android:textColor="@color/red_primary"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="18sp"
+        android:autoSizeMaxTextSize="28sp"
+        android:autoSizeStepGranularity="2sp" />
+
+        <Spinner
+            android:id="@+id/GuestMenuStarters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+
+        <Spinner
+            android:id="@+id/GuestMenuMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+
+        <Spinner
+            android:id="@+id/GuestMenuDesserts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+
+        <Spinner
+            android:id="@+id/GuestMenuDrinks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+
+        <Spinner
+            android:id="@+id/GuestMenuSides"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+    </LinearLayout>
