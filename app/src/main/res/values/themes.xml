@@ -17,4 +17,17 @@
 
     <style name="Theme.COMP2000" parent="Base.Theme.COMP2000" />
 
+    <!-- Reusable Spinner Style -->
+    <style name="MySpinnerStyle">
+        <!-- Use your custom background -->
+        <item name="android:background">@drawable/menu_spinner_background</item>
+        <item name="android:padding">8dp</item>
+
+        <!-- Text styling -->
+        <item name="android:textColor">@color/text_dark</item>
+        <item name="android:gravity">center_vertical</item>
+
+        <!-- Optional dropdown background -->
+        <item name="android:popupBackground">@color/red_primary</item>
+    </style>
 </resources>

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navgraph"
-    app:startDestination="@id/guestMenu">
+    app:startDestination="@id/login">
 
     <fragment
         android:id="@+id/login"
@@ -22,12 +22,13 @@
         <action
             android:id="@+id/action_guestHome_to_myBookings"
             app:destination="@id/myBookings" />
-        <action
-            android:id="@+id/action_guestHome_to_guestMenu"
-            app:destination="@id/guestMenu" />
+
         <action
             android:id="@+id/action_guestHome_to_guestMakeBooking"
             app:destination="@id/guestMakeBooking" />
+        <action
+            android:id="@+id/action_guestHome_to_guestMenu2"
+            app:destination="@id/guestMenu" />
     </fragment>
     <fragment
         android:id="@+id/myBookings"

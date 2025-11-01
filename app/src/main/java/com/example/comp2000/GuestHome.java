@@ -4,9 +4,16 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
+import android.widget.Button;
 import android.view.View;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+
+import android.widget.Toast;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,7 +65,31 @@ public class GuestHome extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_guest_home, container, false);
+
+
+        Button guestMenuButton = view.findViewById(R.id.GuestMenuButton);
+        Button GuestBookTableButton = view.findViewById(R.id.GuestBookTableButton);
+        Button GuestViewBookingsButton = view.findViewById(R.id.GuestViewBookingsButton);
+
+        guestMenuButton.setOnClickListener(v -> {
+            // Handle guest menu click
+            Navigation.findNavController(v).navigate(R.id.action_guestHome_to_guestMenu2);
+        });
+
+        GuestBookTableButton.setOnClickListener(v -> {
+                    // Handle book table click
+                    Navigation.findNavController(v).navigate(R.id.action_guestHome_to_guestMakeBooking);
+                });
+
+        GuestViewBookingsButton.setOnClickListener(v -> {
+            // Handle view bookings
+            Navigation.findNavController(v).navigate(R.id.action_guestHome_to_myBookings);
+        });
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_guest_home, container, false);
+        return view;
     }
 }

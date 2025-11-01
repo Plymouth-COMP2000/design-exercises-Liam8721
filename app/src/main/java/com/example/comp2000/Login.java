@@ -61,10 +61,9 @@ public class Login extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         View view =  inflater.inflate(R.layout.fragment_login, container, false);
-        Button login = view.findViewById(R.id.loginB);
 
+        Button login = view.findViewById(R.id.loginB);
         login.setOnClickListener( l -> {
             Navigation.findNavController(l).navigate(R.id.action_login_to_guestHome2);
         });
