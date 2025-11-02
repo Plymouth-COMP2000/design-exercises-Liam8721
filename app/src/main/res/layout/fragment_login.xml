@@ -12,63 +12,86 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
+        <ImageView
+            android:id="@+id/LoginBurgerIcon"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="100dp"
+            android:src="@drawable/ic_burger_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/LoginSubtitle" />
+
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/LoginTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="16dp"
             android:text="Login"
             android:textSize="48sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/editTextText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Please Sign In to Continue"
-            app:layout_constraintEnd_toEndOf="@+id/textView2"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditText"
-            android:layout_width="408dp"
-            android:layout_height="59dp"
-            android:layout_marginBottom="24dp"
-            android:hint="Password"
-            app:layout_constraintBottom_toTopOf="@+id/loginB"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditText2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:hint="Username"
-            app:layout_constraintBottom_toTopOf="@+id/textInputEditText"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent" />
-
         <Button
-            android:id="@+id/loginB"
+            android:id="@+id/LoginSignInButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="40dp"
             android:text="Sign In"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+        <TextView
+            android:id="@+id/LoginSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Please Log In to Continue"
+            app:layout_constraintStart_toStartOf="@+id/LoginTitle"
+            app:layout_constraintTop_toBottomOf="@+id/LoginTitle" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/LoginBurgerIcon">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/LoginInputUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Username"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Password"
+                app:layout_constraintEnd_toEndOf="@+id/LoginInputUsername"
+                app:layout_constraintStart_toStartOf="@+id/LoginInputUsername"
+                app:layout_constraintTop_toBottomOf="@+id/LoginInputUsername" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/LoginRegisterButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Register"
+            app:layout_constraintEnd_toEndOf="@+id/LoginSignInButton"
+            app:layout_constraintStart_toStartOf="@+id/LoginSignInButton"
+            app:layout_constraintTop_toBottomOf="@+id/LoginSignInButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -55,60 +55,66 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <Spinner
-        android:id="@+id/GuestMenuStarters"
-        style="@style/MySpinnerStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="409dp"
+        android:layout_height="0dp"
         android:layout_marginTop="50dp"
-        android:spinnerMode="dialog"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/GuestMenudivider" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GuestMenudivider"
+        tools:layout_editor_absoluteX="1dp">
 
-    <Spinner
-        android:id="@+id/GuestMenuMain"
-        style="@style/MySpinnerStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:spinnerMode="dialog"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/GuestMenuStarters" />
+        <Spinner
+            android:id="@+id/GuestMenuStarters"
+            style="@style/MySpinnerStyle"
+            android:layout_width="411dp"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/GuestMenuDesserts"
-        style="@style/MySpinnerStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:spinnerMode="dialog"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/GuestMenuMain" />
+        <Spinner
+            android:id="@+id/GuestMenuMain"
+            style="@style/MySpinnerStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:spinnerMode="dialog"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/GuestMenuStarters" />
 
-    <Spinner
-        android:id="@+id/GuestMenuDrinks"
-        style="@style/MySpinnerStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:spinnerMode="dialog"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/GuestMenuDesserts" />
+        <Spinner
+            android:id="@+id/GuestMenuDesserts"
+            style="@style/MySpinnerStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:spinnerMode="dialog"
+            app:layout_constraintEnd_toEndOf="@+id/GuestMenuMain"
+            app:layout_constraintStart_toStartOf="@+id/GuestMenuMain"
+            app:layout_constraintTop_toBottomOf="@+id/GuestMenuMain" />
 
-    <Spinner
-        android:id="@+id/GuestMenuSides"
-        style="@style/MySpinnerStyle"
-        android:layout_width="406dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="24dp"
-        android:spinnerMode="dialog"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/GuestMenuDrinks" />
+        <Spinner
+            android:id="@+id/GuestMenuDrinks"
+            style="@style/MySpinnerStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:spinnerMode="dialog"
+            app:layout_constraintEnd_toEndOf="@+id/GuestMenuDesserts"
+            app:layout_constraintStart_toStartOf="@+id/GuestMenuDesserts"
+            app:layout_constraintTop_toBottomOf="@+id/GuestMenuDesserts" />
+
+        <Spinner
+            android:id="@+id/GuestMenuSides"
+            style="@style/MySpinnerStyle"
+            android:layout_width="406dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:spinnerMode="dialog"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/GuestMenuDrinks"
+            app:layout_constraintTop_toBottomOf="@+id/GuestMenuDrinks" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
