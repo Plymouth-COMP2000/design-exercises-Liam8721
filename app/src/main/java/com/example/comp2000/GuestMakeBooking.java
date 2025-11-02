@@ -3,10 +3,14 @@ package com.example.comp2000;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+import android.widget.Spinner;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,7 +62,50 @@ public class GuestMakeBooking extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_guest_make_booking, container, false);
+
+        ImageButton GuestMakeBookingBackIC = view.findViewById(R.id.GuestMakeBookingBackIC);
+
+        Spinner SpinnerGuestMakeBookingDate = view.findViewById(R.id.GuestMakeBookingDate);
+        Spinner SpinnerGuestMakeBookingPartySize = view.findViewById(R.id.GuestMakeBookingPartySize);
+        Spinner SpinnerGuestMakeBookingTime = view.findViewById(R.id.GuestMakeBookingTime);
+
+
+        GuestMakeBookingBackIC.setOnClickListener(v -> {
+            Navigation.findNavController(v).navigate(R.id.action_guestMakeBooking_to_guestHome);
+        });
+
+        // Setup all spinners using the helper method
+        setupSpinner(SpinnerGuestMakeBookingDate, R.array.GuestBookingDate);
+        setupSpinner(SpinnerGuestMakeBookingPartySize, R.array.GuestBookingParty);
+        setupSpinner(SpinnerGuestMakeBookingTime, R.array.GuestBookingTime);
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_guest_make_booking, container, false);
+        return view;
+    }
+
+    /**
+     * Helper method to setup a spinner with custom layouts
+     * @param spinner Spinner view to configure
+     * @param spinnerItems String array resource ID (from res/values/strings.xml)
+     */
+    private void setupSpinner(Spinner spinner, int spinnerItems) {
+        // Load string array from resources
+        String[] items = getResources().getStringArray(spinnerItems);
+
+        // Create adapter with closed view layout (white text)
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                requireContext(),
+                R.layout.guest_make_booking_spinner_closed_layout,
+                items
+        );
+
+        // Set dropdown layout (black text)
+        adapter.setDropDownViewResource(R.layout.guest_make_booking_spinner_dropdown_layout);
+
+        // Apply adapter to spinner
+        spinner.setAdapter(adapter);
     }
 }

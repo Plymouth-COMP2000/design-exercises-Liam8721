@@ -22,7 +22,7 @@
         <item>Additional Notes: Lactose Intolerant</item>
     </string-array>
 
-    <string-array name="BookingParty">
+    <string-array name="GuestBookingParty">
         <item>1</item>
         <item>2</item>
         <item>3</item>

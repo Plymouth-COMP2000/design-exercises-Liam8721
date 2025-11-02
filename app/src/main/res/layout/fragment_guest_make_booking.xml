@@ -11,110 +11,185 @@
     <TextView
         android:id="@+id/GuestMakeBookingTitle"
         style="@style/TitleTextStyle"
-        android:text="Make a Booking"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:text="Make a Booking"
         android:textAlignment="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/GuestMakeBookingBackIC"
+        app:layout_constraintEnd_toStartOf="@+id/GuestMakeBookingMenuIC"
+        app:layout_constraintStart_toEndOf="@+id/GuestMakeBookingBackIC"
+        app:layout_constraintTop_toTopOf="@+id/GuestMakeBookingMenuIC" />
 
-    <Spinner
-        android:id="@+id/GuestMakeBookingPartySize"
+    <View
+        android:id="@+id/GuestMakeBookingdivider"
         android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="40dp"
-        android:entries="@array/BookingParty"
-        android:spinnerMode="dialog"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/GuestMakeBookingTitle"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/red_primary"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/GuestMakeBookingTitle" />
+
+    <ImageButton
+        android:id="@+id/GuestMakeBookingBackIC"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Back"
+        android:src="@drawable/ic_back_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/GuestMakeBookingMenuIC"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="5dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Menu"
+        android:src="@drawable/ic_menu_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Date Spinner -->
-    <Spinner
-        android:id="@+id/GuestMakeBookingDate"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:entries="@array/GuestBookingDate"
-        android:gravity="center"
-        android:spinnerMode="dialog"
-        app:layout_constraintEnd_toStartOf="@id/GuestMakeBookingTime"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/GuestMakeBookingPartySize" />
 
     <!-- Time Spinner -->
-    <Spinner
-        android:id="@+id/GuestMakeBookingTime"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:entries="@array/GuestBookingTime"
-        android:spinnerMode="dialog"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/GuestMakeBookingPartySize"
-        app:layout_constraintStart_toEndOf="@id/GuestMakeBookingDate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_weight="1" />
 
     <!-- Booking Results Section -->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bookingResultsContainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:padding="16dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/rounded_background"
-        app:layout_constraintTop_toBottomOf="@id/GuestMakeBookingTime"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/GuestMakeBookingDropdownLayout">
 
         <TextView
             android:id="@+id/resultsLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Available Slots"
-            android:textStyle="bold"
-            android:textSize="18sp"
             android:textColor="@color/text_dark"
-            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/GuestMakeBookingButton1"
             style="@style/MyButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="13:00, Today"
-            app:layout_constraintTop_toBottomOf="@id/resultsLabel"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/resultsLabel" />
 
         <Button
             android:id="@+id/GuestMakeBookingButton2"
             style="@style/MyButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="13:00, Tomorrow"
-            app:layout_constraintTop_toBottomOf="@id/GuestMakeBookingButton1"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="8dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/GuestMakeBookingButton1" />
 
         <Button
             android:id="@+id/GuestMakeBookingButton3"
             style="@style/MyButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="15:00, 16/11"
-            app:layout_constraintTop_toBottomOf="@id/GuestMakeBookingButton2"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="8dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/GuestMakeBookingButton2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/GuestMakeBookingDropdownLayout"
+        android:layout_width="401dp"
+        android:layout_height="0dp"
+        android:layout_marginVertical="50dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/rounded_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GuestMakeBookingdivider">
+
+        <TextView
+            android:id="@+id/GuestMakeBookingDropdownLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="New Booking"
+            android:textColor="@color/text_dark"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/GuestMakeBookingPartySize"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/guest_make_booking_spinner_background"
+            android:gravity="center"
+            android:spinnerMode="dialog"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="@+id/GuestMakeBookingTime"
+            app:layout_constraintStart_toStartOf="@+id/GuestMakeBookingDate"
+            app:layout_constraintTop_toBottomOf="@+id/GuestMakeBookingDropdownLabel" />
+
+        <Spinner
+            android:id="@+id/GuestMakeBookingDate"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="4dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/guest_make_booking_spinner_background"
+            android:gravity="center"
+            android:spinnerMode="dialog"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toStartOf="@+id/GuestMakeBookingTime"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/GuestMakeBookingPartySize" />
+
+        <Spinner
+            android:id="@+id/GuestMakeBookingTime"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/guest_make_booking_spinner_background"
+            android:gravity="center"
+            android:spinnerMode="dialog"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/GuestMakeBookingDate"
+            app:layout_constraintTop_toBottomOf="@+id/GuestMakeBookingPartySize" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
