@@ -19,10 +19,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/GuestMenuMenuIC" />
 
+    <View
+        android:id="@+id/GuestMenudivider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/red_primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/GuestMenuTitle" />
+
     <ImageButton
         android:id="@+id/GuestMenuBackIC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="?attr/selectableItemBackgroundBorderless"
@@ -33,8 +43,8 @@
 
     <ImageButton
         android:id="@+id/GuestMenuMenuIC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="5dp"
@@ -44,17 +54,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <Spinner
         android:id="@+id/GuestMenuStarters"
         style="@style/MySpinnerStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="50dp"
         android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/GuestMenuTitle" />
-
+        app:layout_constraintTop_toBottomOf="@+id/GuestMenudivider" />
 
     <Spinner
         android:id="@+id/GuestMenuMain"
@@ -92,8 +103,8 @@
     <Spinner
         android:id="@+id/GuestMenuSides"
         style="@style/MySpinnerStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="406dp"
+        android:layout_height="42dp"
         android:layout_marginTop="24dp"
         android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"

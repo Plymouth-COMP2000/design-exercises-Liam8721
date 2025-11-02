@@ -19,21 +19,14 @@
 
     <TextView
         android:id="@+id/textViewTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TitleTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
         android:text="My Bookings"
-        android:textColor="@color/red_primary"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        android:autoSizeTextType="uniform"
-        android:autoSizeMinTextSize="18sp"
-        android:autoSizeMaxTextSize="28sp"
-        android:autoSizeStepGranularity="2sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/GuestMyBookingsBackButton"
-        app:layout_constraintEnd_toStartOf="@id/menu_button"
-        app:layout_constraintBottom_toBottomOf="@id/GuestMyBookingsBackButton"
-        app:layout_constraintHorizontal_bias="0.5" />
+        app:layout_constraintBottom_toBottomOf="@+id/GuestMyBookingsBackButton"
+        app:layout_constraintEnd_toStartOf="@+id/menu_button"
+        app:layout_constraintStart_toEndOf="@+id/GuestMyBookingsBackButton"
+        app:layout_constraintTop_toTopOf="@+id/menu_button" />
 
     <ImageButton
         android:id="@+id/menu_button"
