@@ -13,6 +13,8 @@ import android.widget.Spinner;
 
 import java.util.ArrayList;
 
+import androidx.core.content.ContextCompat;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link GuestMenu#newInstance} factory method to
@@ -63,45 +65,45 @@ public class GuestMenu extends Fragment {
     private ArrayList<MenuItem> testStartersItems() {
         ArrayList<MenuItem> testItems = new ArrayList<>();
         testItems.add(new MenuItem("Starters", 0.0F, null));
-        testItems.add(new MenuItem("Salad", 8.99F, null));
-        testItems.add(new MenuItem("Soup", 6.99F, null));
-        testItems.add(new MenuItem("Toast", 3.99F, null));
+        testItems.add(new MenuItem("Salad", 8.99F, ContextCompat.getDrawable(requireContext(), R.drawable.salad)));
+        testItems.add(new MenuItem("Soup", 6.99F, ContextCompat.getDrawable(requireContext(), R.drawable.soup)));
+        testItems.add(new MenuItem("Toast", 3.99F, ContextCompat.getDrawable(requireContext(), R.drawable.toast)));
         return testItems;
     }
 
     private ArrayList<MenuItem> testMainsItems() {
         ArrayList<MenuItem> testItems = new ArrayList<>();
         testItems.add(new MenuItem("Mains", 0.0F, null));
-        testItems.add(new MenuItem("Pizza", 10.99F, null));
-        testItems.add(new MenuItem("Pasta", 12.99F, null));
-        testItems.add(new MenuItem("Salad", 8.99F, null));
+        testItems.add(new MenuItem("Pizza", 10.99F, ContextCompat.getDrawable(requireContext(), R.drawable.pizza)));
+        testItems.add(new MenuItem("Pasta", 12.99F, ContextCompat.getDrawable(requireContext(), R.drawable.pasta)));
+        testItems.add(new MenuItem("Burger", 8.99F, ContextCompat.getDrawable(requireContext(), R.drawable.burger)));
         return testItems;
     }
 
     private ArrayList<MenuItem> testDessertsItems() {
         ArrayList<MenuItem> testItems = new ArrayList<>();
         testItems.add(new MenuItem("Desserts", 0.0F, null));
-        testItems.add(new MenuItem("Ice Cream", 4.99F, null));
-        testItems.add(new MenuItem("Pie", 5.99F, null));
-        testItems.add(new MenuItem("Cake", 6.99F, null));
+        testItems.add(new MenuItem("Ice Cream", 4.99F, ContextCompat.getDrawable(requireContext(), R.drawable.icecream)));
+        testItems.add(new MenuItem("Pie", 5.99F, ContextCompat.getDrawable(requireContext(), R.drawable.pie)));
+        testItems.add(new MenuItem("Cake", 6.99F, ContextCompat.getDrawable(requireContext(), R.drawable.cake)));
         return testItems;
     }
 
     private ArrayList<MenuItem> testDrinksItems() {
         ArrayList<MenuItem> testItems = new ArrayList<>();
         testItems.add(new MenuItem("Drinks", 0.0F, null));
-        testItems.add(new MenuItem("Soft Drinks", 2.99F, null));
-        testItems.add(new MenuItem("Water", 1.99F, null));
-        testItems.add(new MenuItem("Juice", 3.99F, null));
+        testItems.add(new MenuItem("Soft Drinks", 2.99F, ContextCompat.getDrawable(requireContext(), R.drawable.softdrink)));
+        testItems.add(new MenuItem("Water", 1.99F, ContextCompat.getDrawable(requireContext(), R.drawable.water)));
+        testItems.add(new MenuItem("Juice", 3.99F, ContextCompat.getDrawable(requireContext(), R.drawable.juice)));
         return testItems;
     }
 
     private ArrayList<MenuItem> testSidesItems() {
         ArrayList<MenuItem> testItems = new ArrayList<>();
         testItems.add(new MenuItem("Sides", 0.0F, null));
-        testItems.add(new MenuItem("Wings", 8.99F, null));
-        testItems.add(new MenuItem("Fruit", 6.99F, null));
-        testItems.add(new MenuItem("Cheese Sticks", 3.99F, null));
+        testItems.add(new MenuItem("Wings", 8.99F, ContextCompat.getDrawable(requireContext(), R.drawable.wings)));
+        testItems.add(new MenuItem("Fruit", 6.99F, ContextCompat.getDrawable(requireContext(), R.drawable.fruit)));
+        testItems.add(new MenuItem("Cheese Sticks", 3.99F, ContextCompat.getDrawable(requireContext(), R.drawable.cheesesticks)));
         return testItems;
     }
 

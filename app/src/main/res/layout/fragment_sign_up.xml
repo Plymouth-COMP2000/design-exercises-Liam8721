@@ -26,8 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Please sign up to continue"
-        android:textColor="@color/text_dark"
         android:textSize="25sp"
+        android:textStyle="italic"
         app:layout_constraintStart_toStartOf="@+id/SignUpTitle"
         app:layout_constraintTop_toBottomOf="@id/SignUpTitle" />
 
@@ -38,8 +38,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:text="Sign Up"
-        app:layout_constraintBottom_toTopOf="@+id/SignInButton"
+        app:layout_constraintBottom_toTopOf="@+id/SignUptextview"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -174,5 +175,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/SignUptextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Already have an account??? Sign In below"
+        app:layout_constraintBottom_toTopOf="@+id/SignInButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

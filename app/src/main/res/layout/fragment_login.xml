@@ -28,8 +28,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:textColor="@color/red_primary"
+            android:textSize="50sp"
+            android:textStyle="bold"
             android:text="Login"
-            android:textSize="48sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,7 +51,9 @@
             android:id="@+id/LoginSubtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="16dp"
+            android:textSize="25sp"
+            android:textStyle="italic"
             android:text="Please Log In to Continue"
             app:layout_constraintStart_toStartOf="@+id/LoginTitle"
             app:layout_constraintTop_toBottomOf="@+id/LoginTitle" />
