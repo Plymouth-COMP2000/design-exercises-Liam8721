@@ -10,11 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SignUpFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class SignUpFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -30,14 +26,6 @@ public class SignUpFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SignUpFragment.
-     */
     // TODO: Rename and change types and number of parameters
     public static SignUpFragment newInstance(String param1, String param2) {
         SignUpFragment fragment = new SignUpFragment();
@@ -71,10 +59,9 @@ public class SignUpFragment extends Fragment {
         });
 
         SignIn.setOnClickListener( l -> {
-            Navigation.findNavController(l).navigate(R.id.action_signUpFragment_to_login);
+            Navigation.findNavController(l).navigate(R.id.action_sign_up_to_login);
         });
 
-        // Inflate the layout for this fragment
         return view;
     }
 }

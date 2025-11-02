@@ -32,14 +32,7 @@ public class GuestMakeBooking extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment GuestMakeBooking.
-     */
+
     // TODO: Rename and change types and number of parameters
     public static GuestMakeBooking newInstance(String param1, String param2) {
         GuestMakeBooking fragment = new GuestMakeBooking();
@@ -86,11 +79,7 @@ public class GuestMakeBooking extends Fragment {
         return view;
     }
 
-    /**
-     * Helper method to setup a spinner with custom layouts
-     * @param spinner Spinner view to configure
-     * @param spinnerItems String array resource ID (from res/values/strings.xml)
-     */
+
     private void setupSpinner(Spinner spinner, int spinnerItems) {
         // Load string array from resources
         String[] items = getResources().getStringArray(spinnerItems);

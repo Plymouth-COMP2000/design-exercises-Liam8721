@@ -8,20 +8,15 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Button;
+import android.widget.Spinner;
 
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MyBookings#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class MyBookings extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -30,17 +25,8 @@ public class MyBookings extends Fragment {
     private String mParam2;
 
     public MyBookings() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MyBookings.
-     */
     // TODO: Rename and change types and number of parameters
     public static MyBookings newInstance(String param1, String param2) {
         MyBookings fragment = new MyBookings();
@@ -66,14 +52,32 @@ public class MyBookings extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_my_bookings, container, false);
 
+        Spinner GuestBookingExample1 = view.findViewById(R.id.GuestBookingExample1);
+        Spinner GuestBookingExample2 = view.findViewById(R.id.GuestBookingExample2);
+
         ImageButton GuestMyBookingsBackButton = view.findViewById(R.id.GuestMyBookingsBackButton);
 
         GuestMyBookingsBackButton.setOnClickListener(v -> {
-            // Handle book table click
             Navigation.findNavController(v).navigate(R.id.action_myBookings_to_guestHome);
         });
 
-        // Inflate the layout for this fragment
+        setupSpinner(GuestBookingExample1, R.array.Table5);
+        setupSpinner(GuestBookingExample2, R.array.Table6);
+
         return view;
+    }
+
+    private void setupSpinner(Spinner spinner, int spinnerItems) {
+        String[] items = getResources().getStringArray(spinnerItems);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                requireContext(),
+                R.layout.guest_make_booking_spinner_closed_layout,
+                items
+        );
+
+        adapter.setDropDownViewResource(R.layout.guest_make_booking_spinner_dropdown_layout);
+
+        spinner.setAdapter(adapter);
     }
 }

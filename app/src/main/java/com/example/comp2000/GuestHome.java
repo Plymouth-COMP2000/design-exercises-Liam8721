@@ -15,11 +15,7 @@ import androidx.navigation.Navigation;
 import android.widget.Toast;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link GuestHome#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class GuestHome extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -35,14 +31,6 @@ public class GuestHome extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment GuestHome.
-     */
     // TODO: Rename and change types and number of parameters
     public static GuestHome newInstance(String param1, String param2) {
         GuestHome fragment = new GuestHome();
@@ -74,22 +62,17 @@ public class GuestHome extends Fragment {
         Button GuestViewBookingsButton = view.findViewById(R.id.GuestViewBookingsButton);
 
         guestMenuButton.setOnClickListener(v -> {
-            // Handle guest menu click
             Navigation.findNavController(v).navigate(R.id.action_guestHome_to_guestMenu2);
         });
 
         GuestBookTableButton.setOnClickListener(v -> {
-            // Handle book table click
             Navigation.findNavController(v).navigate(R.id.action_guestHome_to_guestMakeBooking);
         });
 
         GuestViewBookingsButton.setOnClickListener(v -> {
-            // Handle view bookings
             Navigation.findNavController(v).navigate(R.id.action_guestHome_to_myBookings);
         });
 
-
-        // Inflate the layout for this fragment
         return view;
     }
 }

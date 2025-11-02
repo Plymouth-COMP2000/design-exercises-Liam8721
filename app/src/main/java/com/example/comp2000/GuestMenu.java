@@ -15,11 +15,6 @@ import java.util.ArrayList;
 
 import androidx.core.content.ContextCompat;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link GuestMenu#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class GuestMenu extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -34,15 +29,6 @@ public class GuestMenu extends Fragment {
     public GuestMenu() {
         // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment GuestMenu.
-     */
     // TODO: Rename and change types and number of parameters
     public static GuestMenu newInstance(String param1, String param2) {
         GuestMenu fragment = new GuestMenu();
@@ -145,7 +131,6 @@ public class GuestMenu extends Fragment {
 
         ImageButton GuestMenuBackIC = view.findViewById(R.id.GuestMenuBackIC);
         GuestMenuBackIC.setOnClickListener(v -> {
-            // Handle book table click
             Navigation.findNavController(v).navigate(R.id.action_guestMenu_to_guestHome);
         });
 
