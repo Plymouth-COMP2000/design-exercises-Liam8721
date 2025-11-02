@@ -38,17 +38,17 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:text="Sign Up"
-        app:layout_constraintBottom_toTopOf="@+id/backButton"
+        app:layout_constraintBottom_toTopOf="@+id/SignInButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/backButton"
-        android:layout_width="wrap_content"
+        android:id="@+id/SignInButton"
+        style="@style/MyButtonStyle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/yellow_accent"
-        android:text="Back"
-        android:textColor="@color/text_dark"
+        android:layout_marginBottom="20dp"
+        android:text="Sign In"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

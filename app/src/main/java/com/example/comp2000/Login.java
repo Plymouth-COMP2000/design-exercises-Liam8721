@@ -64,9 +64,16 @@ public class Login extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_login, container, false);
 
         Button login = view.findViewById(R.id.LoginSignInButton);
+        Button Register = view.findViewById(R.id.LoginRegisterButton);
+
         login.setOnClickListener( l -> {
             Navigation.findNavController(l).navigate(R.id.action_login_to_guestHome2);
         });
+
+        Register.setOnClickListener( l -> {
+            Navigation.findNavController(l).navigate(R.id.action_login_to_sign_up);
+        });
+
         return view;
     }
 }

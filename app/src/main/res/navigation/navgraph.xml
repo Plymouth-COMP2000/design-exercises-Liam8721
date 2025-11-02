@@ -14,8 +14,8 @@
             android:id="@+id/action_login_to_guestHome2"
             app:destination="@id/guestHome" />
         <action
-            android:id="@+id/action_login_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
+            android:id="@+id/action_login_to_sign_up"
+            app:destination="@id/sign_up" />
     </fragment>
     <fragment
         android:id="@+id/guestHome"
@@ -61,12 +61,15 @@
             app:destination="@id/guestHome" />
     </fragment>
     <fragment
-        android:id="@+id/signUpFragment"
+        android:id="@+id/sign_up"
         android:name="com.example.comp2000.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
             android:id="@+id/action_signUpFragment_to_login"
             app:destination="@id/login" />
+        <action
+            android:id="@+id/action_sign_up_to_guestHome"
+            app:destination="@id/guestHome" />
     </fragment>
 </navigation>
