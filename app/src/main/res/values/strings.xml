@@ -4,6 +4,7 @@
     <string name="view_bookings">View Bookings</string>
     <string name="menu">Menu</string>
     <string name="book_a_table">Book a Table</string>
+    <string name="reservations">Reservations</string>
 
     <string-array name="Table5">
         <item>15/12/2025, 13 00</item>

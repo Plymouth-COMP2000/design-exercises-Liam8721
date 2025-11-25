@@ -72,4 +72,9 @@
             android:id="@+id/action_sign_up_to_login"
             app:destination="@id/login" />
     </fragment>
+    <fragment
+        android:id="@+id/staffHome2"
+        android:name="com.example.comp2000.StaffHome"
+        android:label="fragment_staff_home"
+        tools:layout="@layout/fragment_staff_home" />
 </navigation>
