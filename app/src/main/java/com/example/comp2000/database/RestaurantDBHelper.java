@@ -1,14 +1,43 @@
 package com.example.comp2000.database;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class RestaurantDBHelper extends SQLiteOpenHelper {
+    // New Reservation
+    public long NewReservation(int PartySize, String BookingDate, String AdditionalInfo) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues ReservationValues = new ContentValues();
+        ReservationValues.put(COL_PARTY_SIZE, PartySize);
+        ReservationValues.put(COL_DATE, BookingDate);
+        ReservationValues.put(COL_ADDITIONAL_INFO, AdditionalInfo);
+
+        return db.insert(TABLE_RESERVATIONS, null, ReservationValues);
+    }
+
 
     // Database name and version
     private static final String DATABASE_NAME = "restaurant.db";
     private static final int DATABASE_VERSION = 1;
+
+    // Data Retrieval
+    public Cursor getAllReservations() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.query(
+                TABLE_RESERVATIONS,               // Table name
+                new String[]{COL_RES_ID, COL_PARTY_SIZE, COL_DATE, COL_ADDITIONAL_INFO},  // Columns to return
+                null,                             // Selection (WHERE clause)
+                null,                             // Selection args
+                null,                             // Group by
+                null,                             // Having
+                COL_DATE + " ASC"                 // Order by (optional, e.g., ascending by date)
+        );
+    }
+
 
     // Table names
     public static final String TABLE_MENU_CATEGORIES = "MenuCategories";
