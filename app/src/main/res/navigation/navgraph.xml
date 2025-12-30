@@ -76,5 +76,22 @@
         android:id="@+id/staffHome2"
         android:name="com.example.comp2000.StaffHome"
         android:label="fragment_staff_home"
-        tools:layout="@layout/fragment_staff_home" />
+        tools:layout="@layout/fragment_staff_home" >
+        <action
+            android:id="@+id/action_staffHome2_to_staff_menu"
+            app:destination="@id/staff_menu" />
+        <action
+            android:id="@+id/action_staffHome2_to_staff_reservations"
+            app:destination="@id/staff_reservations" />
+    </fragment>
+    <fragment
+        android:id="@+id/staff_reservations"
+        android:name="com.example.comp2000.staff_reservations"
+        android:label="fragment_staff_reservations"
+        tools:layout="@layout/fragment_staff_reservations" />
+    <fragment
+        android:id="@+id/staff_menu"
+        android:name="com.example.comp2000.staff_menu"
+        android:label="fragment_staff_menu"
+        tools:layout="@layout/fragment_staff_menu" />
 </navigation>

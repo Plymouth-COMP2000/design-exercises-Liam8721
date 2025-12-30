@@ -7,6 +7,10 @@
     <string name="book_a_table">Book a Table</string>
     <string name="back_button_description">Back</string>
     <string name="staff_reservations">Staff Reservations</string>
+    <string name="edit_menu">Edit Menu</string>
+    <string name="add_menu_item">Add Menu Item</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
 
     <string-array name="Table5">
         <item>Date</item>
