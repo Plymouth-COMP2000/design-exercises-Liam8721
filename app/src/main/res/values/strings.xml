@@ -20,4 +20,34 @@
         <item>Party</item>
         <item>Notes</item>
     </string-array>
+
+    <string-array name="GuestBookingDate">
+        <item>Today</item>
+        <item>Tomorrow</item>
+        <item>Friday, 24th May</item>
+        <item>Saturday, 25th May</item>
+    </string-array>
+
+    <string-array name="GuestBookingParty">
+        <item>1 Person</item>
+        <item>2 People</item>
+        <item>3 People</item>
+        <item>4 People</item>
+        <item>5 People</item>
+        <item>6 People</item>
+        <item>7 People</item>
+        <item>8+ People</item>
+    </string-array>
+
+    <string-array name="GuestBookingTime">
+        <item>17:00</item>
+        <item>17:30</item>
+        <item>18:00</item>
+        <item>18:30</item>
+        <item>19:00</item>
+        <item>19:30</item>
+        <item>20:00</item>
+        <item>20:30</item>
+        <item>21:00</item>
+    </string-array>
 </resources>
