@@ -1,50 +1,19 @@
 <resources>
     <string name="app_name">COMP 2000</string>
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="view_bookings">View Bookings</string>
     <string name="menu">Menu</string>
     <string name="book_a_table">Book a Table</string>
-    <string name="reservations">Reservations</string>
+    <string name="back_button_description">Back</string>
+    <string name="staff_reservations">Staff Reservations</string>
 
     <string-array name="Table5">
-        <item>15/12/2025, 13 00</item>
-        <item>Name: Daniel</item>
-        <item>Contact: 07402399138</item>
-        <item>Party Size: 6</item>
-        <item>Additional Notes: Allergic to Nuts</item>
+        <item>Date</item>
+        <item>Time</item>
+        <item>Name</item>
+        <item>Phone</item>
+        <item>Party</item>
+        <item>Notes</item>
     </string-array>
-
-    <string-array name="Table6">
-        <item>12/12/2025, 13 00</item>
-        <item>Name: Daniel</item>
-        <item>Contact: 07402399138</item>
-        <item>Party Size: 6</item>
-        <item>Additional Notes: Lactose Intolerant</item>
-    </string-array>
-
-    <string-array name="GuestBookingParty">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-    </string-array>
-
-    <string-array name="GuestBookingDate">
-        <item>Today</item>
-        <item>Tomorrow</item>
-        <item>Next Week</item>
-    </string-array>
-
-    <string-array name="GuestBookingTime">
-        <item>12 20</item>
-        <item>13 00</item>
-        <item>14 00</item>
-    </string-array>
-
-
-    <string-array name="Starter"></string-array>
 </resources>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/staffReservationsLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".staff_reservations">
+
+    <ImageButton
+        android:id="@+id/staffReservationsBackButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/back_button_description"
+        android:src="@drawable/ic_back_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/staffReservationsTitle"
+        style="@style/TitleTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:text="@string/staff_reservations"
+        app:layout_constraintBottom_toBottomOf="@+id/staffReservationsBackButton"
+        app:layout_constraintEnd_toStartOf="@+id/staffMenuButton"
+        app:layout_constraintStart_toEndOf="@+id/staffReservationsBackButton"
+        app:layout_constraintTop_toTopOf="@+id/staffMenuButton" />
+
+    <ImageButton
+        android:id="@+id/staffMenuButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/menu"
+        android:src="@drawable/ic_menu_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/staffDivider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/red_primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/staffReservationsTitle" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/staffRecyclerViewBookings"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/staffDivider"
+        tools:listitem="@layout/fragment_booking_item" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
