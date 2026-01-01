@@ -2,6 +2,8 @@ package com.example.comp2000;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -9,92 +11,82 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link GuestMakeBooking#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.example.comp2000.database.Booking;
+import com.example.comp2000.database.BookingDBHelper;
+
 public class GuestMakeBooking extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private BookingDBHelper dbHelper;
 
     public GuestMakeBooking() {
-        // Required empty public constructor
-    }
-
-
-    // TODO: Rename and change types and number of parameters
-    public static GuestMakeBooking newInstance(String param1, String param2) {
-        GuestMakeBooking fragment = new GuestMakeBooking();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        dbHelper = new BookingDBHelper(getContext());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_guest_make_booking, container, false);
+    }
 
-        View view = inflater.inflate(R.layout.fragment_guest_make_booking, container, false);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        ImageButton GuestMakeBookingBackIC = view.findViewById(R.id.GuestMakeBookingBackIC);
+        ImageButton guestMakeBookingBackIC = view.findViewById(R.id.GuestMakeBookingBackIC);
+        Spinner spinnerGuestMakeBookingDate = view.findViewById(R.id.GuestMakeBookingDate);
+        Spinner spinnerGuestMakeBookingPartySize = view.findViewById(R.id.GuestMakeBookingPartySize);
+        Spinner spinnerGuestMakeBookingTime = view.findViewById(R.id.GuestMakeBookingTime);
+        Button searchButton = view.findViewById(R.id.GuestMakeBookingSearchButton);
 
-        Spinner SpinnerGuestMakeBookingDate = view.findViewById(R.id.GuestMakeBookingDate);
-        Spinner SpinnerGuestMakeBookingPartySize = view.findViewById(R.id.GuestMakeBookingPartySize);
-        Spinner SpinnerGuestMakeBookingTime = view.findViewById(R.id.GuestMakeBookingTime);
-
-
-        GuestMakeBookingBackIC.setOnClickListener(v -> {
+        guestMakeBookingBackIC.setOnClickListener(v -> {
             Navigation.findNavController(v).navigate(R.id.action_guestMakeBooking_to_guestHome);
         });
 
-        // Setup all spinners using the helper method
-        setupSpinner(SpinnerGuestMakeBookingDate, R.array.GuestBookingDate);
-        setupSpinner(SpinnerGuestMakeBookingPartySize, R.array.GuestBookingParty);
-        setupSpinner(SpinnerGuestMakeBookingTime, R.array.GuestBookingTime);
+        setupSpinner(spinnerGuestMakeBookingDate, R.array.GuestBookingDate);
+        setupSpinner(spinnerGuestMakeBookingPartySize, R.array.GuestBookingParty);
+        setupSpinner(spinnerGuestMakeBookingTime, R.array.GuestBookingTime);
 
+        searchButton.setOnClickListener(v -> {
+            String date = spinnerGuestMakeBookingDate.getSelectedItem().toString();
+            String time = spinnerGuestMakeBookingTime.getSelectedItem().toString();
+            String partySizeString = spinnerGuestMakeBookingPartySize.getSelectedItem().toString();
 
-        // Inflate the layout for this fragment
-        return view;
+            int partySize = Integer.parseInt(partySizeString.replaceAll("[^0-9]", ""));
+
+            Booking newBooking = new Booking(date, time, partySize, "Guest User", "");
+
+            boolean success = dbHelper.addBooking(newBooking);
+
+            if (success) {
+                Toast.makeText(getContext(), "Booking request sent!", Toast.LENGTH_SHORT).show();
+                Navigation.findNavController(v).navigate(R.id.action_guestMakeBooking_to_guestHome);
+            } else {
+                Toast.makeText(getContext(), "Failed to make booking", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
-
     private void setupSpinner(Spinner spinner, int spinnerItems) {
-        // Load string array from resources
         String[] items = getResources().getStringArray(spinnerItems);
 
-        // Create adapter with closed view layout (white text)
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 requireContext(),
                 R.layout.guest_make_booking_spinner_closed_layout,
                 items
         );
 
-        // Set dropdown layout (black text)
         adapter.setDropDownViewResource(R.layout.guest_make_booking_spinner_dropdown_layout);
 
-        // Apply adapter to spinner
         spinner.setAdapter(adapter);
     }
 }

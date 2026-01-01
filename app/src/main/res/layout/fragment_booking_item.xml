@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- Party Size -->
         <TextView
             android:id="@+id/textPartySize"
             android:layout_width="wrap_content"
@@ -23,7 +22,6 @@
             android:textSize="18sp"
             android:textColor="@android:color/black" />
 
-        <!-- Date -->
         <TextView
             android:id="@+id/textDate"
             android:layout_width="wrap_content"
@@ -33,7 +31,15 @@
             android:layout_marginTop="4dp"
             android:textColor="@android:color/darker_gray" />
 
-        <!-- Additional Info -->
+        <TextView
+            android:id="@+id/textGuestName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guest Name"
+            android:textSize="16sp"
+            android:layout_marginTop="4dp"
+            android:textColor="@android:color/darker_gray" />
+
         <TextView
             android:id="@+id/textAdditionalInfo"
             android:layout_width="wrap_content"

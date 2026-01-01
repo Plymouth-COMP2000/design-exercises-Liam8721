@@ -1,6 +1,5 @@
 package com.example.comp2000;
 
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +13,17 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.comp2000.database.RestaurantDBHelper;
+import com.example.comp2000.database.Booking;
+import com.example.comp2000.database.BookingDBHelper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MyBookings extends Fragment {
+
+    private RecyclerView recyclerView;
+    private MyBookingsAdapter adapter;
+    private BookingDBHelper dbHelper;
+    private List<Booking> bookingList;
 
     public MyBookings() { }
 
@@ -28,53 +32,26 @@ public class MyBookings extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_my_bookings, container, false);
+    }
 
-        View view = inflater.inflate(R.layout.fragment_my_bookings, container, false);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        // Back button
+        dbHelper = new BookingDBHelper(getContext());
+
         ImageButton backButton = view.findViewById(R.id.GuestMyBookingsBackButton);
         backButton.setOnClickListener(v ->
                 Navigation.findNavController(v).navigate(R.id.action_myBookings_to_guestHome)
         );
 
-        // RecyclerView
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerViewBookings);
+        recyclerView = view.findViewById(R.id.recyclerViewBookings);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
 
-        // Load bookings from DB
-        List<ReservationModels> bookings = loadBookingsFromDb();
+        bookingList = dbHelper.getBookingsByGuestName("Guest User");
 
-        // Attach adapter
-        BookingAdapter adapter = new BookingAdapter(bookings);
+        adapter = new MyBookingsAdapter(bookingList);
         recyclerView.setAdapter(adapter);
-
-        return view;
-    }
-
-    private List<ReservationModels> loadBookingsFromDb() {
-        List<ReservationModels> bookings = new ArrayList<>();
-
-        RestaurantDBHelper dbHelper = new RestaurantDBHelper(requireContext());
-        Cursor cursor = dbHelper.getAllReservations();
-
-        try {
-            int idIndex = cursor.getColumnIndexOrThrow(RestaurantDBHelper.COL_RES_ID);
-            int partyIndex = cursor.getColumnIndexOrThrow(RestaurantDBHelper.COL_PARTY_SIZE);
-            int dateIndex = cursor.getColumnIndexOrThrow(RestaurantDBHelper.COL_DATE);
-            int infoIndex = cursor.getColumnIndexOrThrow(RestaurantDBHelper.COL_ADDITIONAL_INFO);
-
-            while (cursor.moveToNext()) {
-                int id = cursor.getInt(idIndex);
-                int partySize = cursor.getInt(partyIndex);
-                String date = cursor.getString(dateIndex);
-                String info = cursor.getString(infoIndex);
-
-                bookings.add(new ReservationModels(id, partySize, date, info));
-            }
-        } finally {
-            cursor.close();
-        }
-
-        return bookings;
     }
 }
