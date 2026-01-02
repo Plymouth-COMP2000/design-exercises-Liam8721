@@ -93,5 +93,14 @@
         android:id="@+id/staff_menu"
         android:name="com.example.comp2000.staff_menu"
         android:label="fragment_staff_menu"
-        tools:layout="@layout/fragment_staff_menu" />
+        tools:layout="@layout/fragment_staff_menu" >
+        <action
+            android:id="@+id/action_staff_menu_to_addMenuItemFragment"
+            app:destination="@id/addMenuItemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addMenuItemFragment"
+        android:name="com.example.comp2000.AddMenuItemFragment"
+        android:label="fragment_add_menu_item"
+        tools:layout="@layout/fragment_add_menu_item" />
 </navigation>

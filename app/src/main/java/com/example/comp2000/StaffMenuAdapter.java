@@ -1,5 +1,7 @@
 package com.example.comp2000;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,12 +37,19 @@ public class StaffMenuAdapter extends RecyclerView.Adapter<StaffMenuAdapter.View
 
         holder.nameTextView.setText(menuItem.getName());
         holder.priceTextView.setText(String.format(Locale.UK, "£%.2f", menuItem.getPrice()));
-        holder.imageView.setImageDrawable(menuItem.getImage());
+
+        byte[] imageBlob = menuItem.getImageBlob();
+        if (imageBlob != null && imageBlob.length > 0) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(imageBlob, 0, imageBlob.length);
+            holder.imageView.setImageBitmap(bitmap);
+        } else {
+            holder.imageView.setImageResource(R.drawable.ic_menu_button);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return menuItems.size();
+        return menuItems != null ? menuItems.size() : 0;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
