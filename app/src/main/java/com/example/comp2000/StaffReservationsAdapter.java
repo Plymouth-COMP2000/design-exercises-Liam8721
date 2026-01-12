@@ -15,6 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.comp2000.database.Booking;
 import com.example.comp2000.database.BookingDBHelper;
 
+import android.app.AlertDialog;
+import android.text.InputType;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+
 import java.util.List;
 
 public class StaffReservationsAdapter extends RecyclerView.Adapter<StaffReservationsAdapter.ViewHolder> {
@@ -38,6 +43,8 @@ public class StaffReservationsAdapter extends RecyclerView.Adapter<StaffReservat
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Booking booking = bookingList.get(position);
+
+        holder.itemView.setOnClickListener(v -> showEditDialog(v.getContext(), booking, holder.getAdapterPosition()));
 
         holder.partySize.setText("Party of " + booking.getPartySize());
         holder.date.setText(booking.getDate() + " at " + booking.getTime());
@@ -91,5 +98,49 @@ public class StaffReservationsAdapter extends RecyclerView.Adapter<StaffReservat
             additionalInfo = itemView.findViewById(R.id.textAdditionalInfo);
             cancelButton = itemView.findViewById(R.id.btnCancelBooking);
         }
+    }
+
+    private void showEditDialog(Context context, Booking booking, int adapterPos) {
+        EditText partySizeET = new EditText(context);
+        partySizeET.setInputType(InputType.TYPE_CLASS_NUMBER);
+        partySizeET.setHint("Party size");
+        partySizeET.setText(String.valueOf(booking.getPartySize()));
+
+        EditText notesET = new EditText(context);
+        notesET.setHint("Notes");
+        notesET.setText(booking.getNotes() == null ? "" : booking.getNotes());
+
+        LinearLayout layout = new LinearLayout(context);
+        layout.setOrientation(LinearLayout.VERTICAL);
+        int pad = (int) (16 * context.getResources().getDisplayMetrics().density);
+        layout.setPadding(pad, pad, pad, pad);
+        layout.addView(partySizeET);
+        layout.addView(notesET);
+
+        new AlertDialog.Builder(context)
+                .setTitle("Edit booking")
+                .setView(layout)
+                .setPositiveButton("Save", (d, which) -> {
+                    String partyStr = partySizeET.getText().toString().trim();
+                    int newParty;
+                    try {
+                        newParty = Integer.parseInt(partyStr);
+                    } catch (Exception e) {
+                        newParty = booking.getPartySize();
+                    }
+
+                    booking.setPartySize(newParty);
+                    booking.setNotes(notesET.getText().toString().trim());
+
+                    dbHelper.updateBooking(booking);
+
+                    if (adapterPos != RecyclerView.NO_POSITION) {
+                        notifyItemChanged(adapterPos);
+                    } else {
+                        notifyDataSetChanged();
+                    }
+                })
+                .setNegativeButton("Cancel", null)
+                .show();
     }
 }
