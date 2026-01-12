@@ -1,33 +1,37 @@
 package com.example.comp2000;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+
+import com.example.comp2000.api.VolleySingleton;
+import com.google.android.material.textfield.TextInputEditText;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Login extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     public Login() {
-        // Required empty public constructor
     }
 
 
-    // TODO: Rename and change types and number of parameters
     public static Login newInstance(String param1, String param2) {
         Login fragment = new Login();
         Bundle args = new Bundle();
@@ -49,18 +53,68 @@ public class Login extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_login, container, false);
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
 
-        Button login = view.findViewById(R.id.LoginSignInButton);
-        Button Register = view.findViewById(R.id.LoginRegisterButton);
+        Button loginBtn = view.findViewById(R.id.LoginSignInButton);
+        Button registerBtn = view.findViewById(R.id.LoginRegisterButton);
 
-        login.setOnClickListener( l -> {
-            Navigation.findNavController(l).navigate(R.id.action_login_to_guestHome2);
+        TextInputEditText usernameET = view.findViewById(R.id.LoginInputUsername);
+        TextInputEditText passwordET = view.findViewById(R.id.textInputEditText);
+
+        SharedPreferences prefs = requireContext().getSharedPreferences("user_prefs", MODE_PRIVATE);
+
+        if (!prefs.getBoolean("db_initialized", false)) {
+            VolleySingleton.createStudentDb(requireContext(), r -> {
+                prefs.edit().putBoolean("db_initialized", true).apply();
+                Log.d("Login", "Student DB initialised");
+            }, e -> {
+                Log.e("Login", "Student DB init failed (may already exist)", e);
+            });
+        }
+
+
+        loginBtn.setOnClickListener(v -> {
+            String username = usernameET.getText() == null ? "" : usernameET.getText().toString().trim();
+            String password = passwordET.getText() == null ? "" : passwordET.getText().toString();
+
+            if (username.isEmpty() || password.isEmpty()) {
+                Toast.makeText(requireContext(), "Enter username and password", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            VolleySingleton.getUser(requireContext(), username, response -> {
+                try {
+                    JSONObject user = response.getJSONObject("user");
+                    String apiPassword = user.optString("password", "");
+
+                    if (apiPassword.equals(password)) {
+                        prefs.edit()
+                                .putString("logged_in_user", username)
+                                .putString("user_type", user.optString("usertype", "student"))
+                                .apply();
+
+                        Navigation.findNavController(view).navigate(R.id.action_login_to_guestHome2);
+                    } else {
+                        Toast.makeText(requireContext(), "Incorrect username or password", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    Log.e("Login", "Bad JSON", e);
+                    Toast.makeText(requireContext(), "Unexpected server response", Toast.LENGTH_SHORT).show();
+                }
+            }, error -> {
+                int code = error.networkResponse == null ? -1 : error.networkResponse.statusCode;
+                if (code == 404) {
+                    Toast.makeText(requireContext(), "Incorrect username or password", Toast.LENGTH_SHORT).show();
+                } else {
+                    Log.e("Login", "Volley error", error);
+                    Toast.makeText(requireContext(), "Network/server error", Toast.LENGTH_SHORT).show();
+                }
+            });
         });
 
-        Register.setOnClickListener( l -> {
-            Navigation.findNavController(l).navigate(R.id.action_login_to_sign_up);
-        });
+        registerBtn.setOnClickListener(v ->
+                Navigation.findNavController(view).navigate(R.id.action_login_to_sign_up)
+        );
 
         return view;
     }
