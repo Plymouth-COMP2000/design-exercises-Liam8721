@@ -44,7 +44,7 @@ public class staff_reservations extends Fragment {
 
         bookingList = dbHelper.getAllBookings();
 
-        adapter = new StaffReservationsAdapter(bookingList);
+        adapter = new StaffReservationsAdapter(requireContext(), bookingList);
         recyclerView.setAdapter(adapter);
     }
 }

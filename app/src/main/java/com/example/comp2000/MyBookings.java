@@ -66,7 +66,7 @@ public class MyBookings extends Fragment {
             bookingList = dbHelper.getBookingsByUsername(username);
         }
 
-        adapter = new MyBookingsAdapter(bookingList);
+        adapter = new MyBookingsAdapter(requireContext(), bookingList);
         recyclerView.setAdapter(adapter);
     }
 }
