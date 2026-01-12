@@ -16,6 +16,11 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
+
+
 import com.example.comp2000.database.Booking;
 import com.example.comp2000.database.BookingDBHelper;
 
@@ -42,6 +47,13 @@ public class GuestMakeBooking extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        SharedPreferences prefs = requireContext()
+                .getSharedPreferences("user_prefs", MODE_PRIVATE);
+
+        String username = prefs.getString("logged_in_user", null);
+        String email = prefs.getString("user_email", null);
+        String fullName = username;
+
         ImageButton guestMakeBookingBackIC = view.findViewById(R.id.GuestMakeBookingBackIC);
         Spinner spinnerGuestMakeBookingDate = view.findViewById(R.id.GuestMakeBookingDate);
         Spinner spinnerGuestMakeBookingPartySize = view.findViewById(R.id.GuestMakeBookingPartySize);
@@ -63,7 +75,15 @@ public class GuestMakeBooking extends Fragment {
 
             int partySize = Integer.parseInt(partySizeString.replaceAll("[^0-9]", ""));
 
-            Booking newBooking = new Booking(date, time, partySize, "Guest User", "");
+            Booking newBooking = new Booking(
+                    date,
+                    time,
+                    partySize,
+                    fullName,
+                    username,
+                    email,
+                    "" // notes
+            );
 
             boolean success = dbHelper.addBooking(newBooking);
 

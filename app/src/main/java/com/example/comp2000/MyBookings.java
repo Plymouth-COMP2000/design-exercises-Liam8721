@@ -16,6 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.comp2000.database.Booking;
 import com.example.comp2000.database.BookingDBHelper;
 
+import static android.content.Context.MODE_PRIVATE;
+import android.content.SharedPreferences;
+
+
 import java.util.List;
 
 public class MyBookings extends Fragment {
@@ -39,6 +43,13 @@ public class MyBookings extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        SharedPreferences prefs = requireContext()
+                .getSharedPreferences("user_prefs", MODE_PRIVATE);
+
+        String username = prefs.getString("logged_in_user", null);
+        String userType = prefs.getString("user_type", "GuestUser");
+
+
         dbHelper = new BookingDBHelper(getContext());
 
         ImageButton backButton = view.findViewById(R.id.GuestMyBookingsBackButton);
@@ -49,7 +60,11 @@ public class MyBookings extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerViewBookings);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
 
-        bookingList = dbHelper.getBookingsByGuestName("Guest User");
+        if ("Staff".equals(userType)) {
+            bookingList = dbHelper.getAllBookings();
+        } else {
+            bookingList = dbHelper.getBookingsByUsername(username);
+        }
 
         adapter = new MyBookingsAdapter(bookingList);
         recyclerView.setAdapter(adapter);

@@ -8,14 +8,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.comp2000.database.Booking;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingViewHolder> {
 
-    private final List<ReservationModels> bookingList;
+    private final List<Booking> bookingList;
 
-    public BookingAdapter(List<ReservationModels> bookingList) {
-        this.bookingList = bookingList;
+    public BookingAdapter(List<Booking> bookingList) {
+        this.bookingList = (bookingList != null) ? bookingList : new ArrayList<>();
     }
 
     @NonNull
@@ -28,22 +31,28 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingV
 
     @Override
     public void onBindViewHolder(@NonNull BookingViewHolder holder, int position) {
-        ReservationModels booking = bookingList.get(position);
+        Booking booking = bookingList.get(position);
 
-        holder.textPartySize.setText("Party of " + booking.GetPartySize());
-        holder.textDate.setText(booking.GetDate());
+        holder.textPartySize.setText("Party of " + booking.getPartySize());
+        holder.textDate.setText(booking.getDate());
 
-        String info = booking.GetAdditionalInfo();
+        String notes = booking.getNotes();
         holder.textAdditionalInfo.setText(
-                (info == null || info.trim().isEmpty())
+                (notes == null || notes.trim().isEmpty())
                         ? "No additional notes"
-                        : info
+                        : notes
         );
     }
 
     @Override
     public int getItemCount() {
         return bookingList.size();
+    }
+
+    public void setBookings(List<Booking> newBookings) {
+        bookingList.clear();
+        if (newBookings != null) bookingList.addAll(newBookings);
+        notifyDataSetChanged();
     }
 
     static class BookingViewHolder extends RecyclerView.ViewHolder {

@@ -8,15 +8,16 @@ public class Booking {
     private int partySize;
     private String guestName;
     private String notes;
-    private boolean isConfirmed;
-
-    public Booking(String date, String time, int partySize, String guestName, String notes) {
+    private String guestUsername;
+    private String guestEmail;
+    public Booking(String date, String time, int partySize, String guestName, String guestUsername, String guestEmail, String notes) {
         this.date = date;
         this.time = time;
         this.partySize = partySize;
         this.guestName = guestName;
         this.notes = notes;
-        this.isConfirmed = false; // Bookings start as unconfirmed requests
+        this.guestUsername = guestUsername;
+        this.guestEmail = guestEmail;
     }
 
     public int getId() {
@@ -67,11 +68,19 @@ public class Booking {
         this.notes = notes;
     }
 
-    public boolean isConfirmed() {
-        return isConfirmed;
+    public String getGuestUsername() {
+        return guestUsername;
     }
 
-    public void setConfirmed(boolean confirmed) {
-        isConfirmed = confirmed;
+    public void setGuestUsername(String guestUsername) {
+        this.guestUsername = guestUsername;
+    }
+
+    public String getGuestEmail() {
+        return guestEmail;
+    }
+
+    public void setGuestEmail(String guestEmail) {
+        this.guestEmail = guestEmail;
     }
 }

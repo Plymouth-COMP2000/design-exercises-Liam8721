@@ -38,6 +38,7 @@ public class Login extends Fragment {
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
+        fragment.setArguments(args);
         return fragment;
     }
 
@@ -86,6 +87,7 @@ public class Login extends Fragment {
                 try {
                     JSONObject user = response.getJSONObject("user");
                     String apiPassword = user.optString("password", "");
+                    String email = user.optString("email", "");
 
                     if (apiPassword.equals(password)) {
 
@@ -94,6 +96,7 @@ public class Login extends Fragment {
                         prefs.edit()
                                 .putString("logged_in_user", username)
                                 .putString("user_type", userType)
+                                .putString("user_email", email)
                                 .apply();
 
                         Log.d("Login", "Usertype from API: " + userType);
