@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_login_to_sign_up"
             app:destination="@id/sign_up" />
+        <action
+            android:id="@+id/action_login_to_staffHome2"
+            app:destination="@id/staffHome2" />
     </fragment>
     <fragment
         android:id="@+id/guestHome"

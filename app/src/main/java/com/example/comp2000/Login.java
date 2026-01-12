@@ -88,12 +88,22 @@ public class Login extends Fragment {
                     String apiPassword = user.optString("password", "");
 
                     if (apiPassword.equals(password)) {
+
+                        String userType = user.optString("usertype", "GuestUser");
+
                         prefs.edit()
                                 .putString("logged_in_user", username)
-                                .putString("user_type", user.optString("usertype", "student"))
+                                .putString("user_type", userType)
                                 .apply();
 
-                        Navigation.findNavController(view).navigate(R.id.action_login_to_guestHome2);
+                        Log.d("Login", "Usertype from API: " + userType);
+
+                        if ("Staff".equals(userType)) {
+                            Navigation.findNavController(view).navigate(R.id.action_login_to_staffHome2);
+                        } else {
+                            Navigation.findNavController(view).navigate(R.id.action_login_to_guestHome2);
+                        }
+
                     } else {
                         Toast.makeText(requireContext(), "Incorrect username or password", Toast.LENGTH_SHORT).show();
                     }

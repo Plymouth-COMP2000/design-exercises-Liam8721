@@ -55,7 +55,9 @@ public class SignUpFragment extends Fragment {
                 userJson.put("lastname", lastname);
                 userJson.put("email", email);
                 userJson.put("contact", contact);
-                userJson.put("usertype", "student"); // or whatever your app needs
+                String userType = determineUserType(email);
+                userJson.put("usertype", userType);
+
             } catch (JSONException e) {
                 Toast.makeText(requireContext(), "Failed to build request", Toast.LENGTH_SHORT).show();
                 return;
@@ -85,4 +87,15 @@ public class SignUpFragment extends Fragment {
     private String text(TextInputEditText et) {
         return et.getText() == null ? "" : et.getText().toString().trim();
     }
+
+    private String determineUserType(String email) {
+        email = email.toLowerCase().trim();
+
+        if (email.endsWith("@company.com")) {
+            return "Staff";
+        }
+
+        return "GuestUser";
+    }
+
 }
