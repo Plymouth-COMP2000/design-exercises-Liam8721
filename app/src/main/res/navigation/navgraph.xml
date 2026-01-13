@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_guestHome_to_guestMenu2"
             app:destination="@id/guestMenu" />
+        <action
+            android:id="@+id/action_guestHome_to_notificationSettings"
+            app:destination="@id/notificationSettingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/myBookings"
@@ -86,6 +89,9 @@
         <action
             android:id="@+id/action_staffHome2_to_staff_reservations"
             app:destination="@id/staff_reservations" />
+        <action
+            android:id="@+id/action_staffHome2_to_notificationSettings"
+            app:destination="@id/notificationSettingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/staff_reservations"
@@ -106,4 +112,9 @@
         android:name="com.example.comp2000.AddMenuItemFragment"
         android:label="fragment_add_menu_item"
         tools:layout="@layout/fragment_add_menu_item" />
+    <fragment
+        android:id="@+id/notificationSettingsFragment"
+        android:name="com.example.comp2000.NotificationSettingsFragment"
+        android:label="fragment_notification_settings"
+        tools:layout="@layout/fragment_notification_settings" />
 </navigation>

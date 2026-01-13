@@ -42,7 +42,15 @@ public class NotificationHelper {
         SharedPreferences prefs = appContext.getSharedPreferences("UserSettings", Context.MODE_PRIVATE);
         boolean allowed = true;
 
-        if ("orders".equals(categoryTag)) {
+        if ("booking".equals(categoryTag)) {
+            if (titleText.contains("Created")) {
+                allowed = prefs.getBoolean("alerts_booking_created", true);
+            } else if (titleText.contains("Updated")) {
+                allowed = prefs.getBoolean("alerts_booking_updated", true);
+            } else if (titleText.contains("Cancelled")) {
+                allowed = prefs.getBoolean("alerts_booking_cancelled", true);
+            }
+        } else if ("orders".equals(categoryTag)) {
             allowed = prefs.getBoolean("alerts_orders", true);
         } else if ("products".equals(categoryTag)) {
             allowed = prefs.getBoolean("alerts_products", true);

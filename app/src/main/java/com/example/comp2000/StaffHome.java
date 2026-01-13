@@ -15,13 +15,11 @@ import android.widget.Button;
 public class StaffHome extends Fragment {
 
     public StaffHome() {
-        // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_staff_home, container, false);
     }
 
@@ -31,6 +29,7 @@ public class StaffHome extends Fragment {
 
         Button staffMenuButton = view.findViewById(R.id.StaffMenuButton);
         Button staffReservationsButton = view.findViewById(R.id.StaffReservationsButton);
+        Button staffNotificationSettingsButton = view.findViewById(R.id.StaffNotificationSettingsButton);
 
         staffMenuButton.setOnClickListener(v -> {
             NavHostFragment.findNavController(StaffHome.this)
@@ -40,6 +39,11 @@ public class StaffHome extends Fragment {
         staffReservationsButton.setOnClickListener(v -> {
             NavHostFragment.findNavController(StaffHome.this)
                     .navigate(R.id.staff_reservations);
+        });
+
+        staffNotificationSettingsButton.setOnClickListener(v -> {
+            NavHostFragment.findNavController(StaffHome.this)
+                    .navigate(R.id.action_staffHome2_to_notificationSettings);
         });
     }
 }
