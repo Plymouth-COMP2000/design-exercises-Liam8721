@@ -42,7 +42,6 @@ public class NotificationHelper {
         SharedPreferences prefs = appContext.getSharedPreferences("UserSettings", Context.MODE_PRIVATE);
         SharedPreferences userPrefs = appContext.getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
 
-        // Get the currently logged-in username
         String currentUsername = userPrefs.getString("logged_in_user", "default_user");
 
         boolean allowed = true;

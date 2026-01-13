@@ -97,7 +97,20 @@
         android:id="@+id/staff_reservations"
         android:name="com.example.comp2000.staff_reservations"
         android:label="fragment_staff_reservations"
-        tools:layout="@layout/fragment_staff_reservations" />
+        tools:layout="@layout/fragment_staff_reservations" >
+        <action
+            android:id="@+id/action_staff_reservations_to_staffMakeBooking"
+            app:destination="@id/staffMakeBooking" />
+    </fragment>
+    <fragment
+        android:id="@+id/staffMakeBooking"
+        android:name="com.example.comp2000.StaffMakeBooking"
+        android:label="fragment_staff_make_booking"
+        tools:layout="@layout/fragment_staff_make_booking" >
+        <action
+            android:id="@+id/action_staffMakeBooking_to_staff_reservations"
+            app:destination="@id/staff_reservations" />
+    </fragment>
     <fragment
         android:id="@+id/staff_menu"
         android:name="com.example.comp2000.staff_menu"

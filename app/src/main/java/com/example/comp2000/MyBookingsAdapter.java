@@ -93,6 +93,12 @@ public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.Vi
         return bookingList.size();
     }
 
+    public void updateBookingList(List<Booking> newBookingList) {
+        bookingList.clear();
+        bookingList.addAll(newBookingList);
+        notifyDataSetChanged();
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         final TextView partySize;
         final TextView date;

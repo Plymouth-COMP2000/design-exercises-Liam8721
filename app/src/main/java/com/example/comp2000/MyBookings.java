@@ -28,6 +28,8 @@ public class MyBookings extends Fragment {
     private MyBookingsAdapter adapter;
     private BookingDBHelper dbHelper;
     private List<Booking> bookingList;
+    private String username;
+    private String userType;
 
     public MyBookings() { }
 
@@ -46,9 +48,8 @@ public class MyBookings extends Fragment {
         SharedPreferences prefs = requireContext()
                 .getSharedPreferences("user_prefs", MODE_PRIVATE);
 
-        String username = prefs.getString("logged_in_user", null);
-        String userType = prefs.getString("user_type", "GuestUser");
-
+        username = prefs.getString("logged_in_user", null);
+        userType = prefs.getString("user_type", "GuestUser");
 
         dbHelper = new BookingDBHelper(getContext());
 
@@ -60,13 +61,22 @@ public class MyBookings extends Fragment {
         recyclerView = view.findViewById(R.id.myBookingsRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
 
-        if ("Staff".equals(userType)) {
-            bookingList = dbHelper.getAllBookings();
-        } else {
-            bookingList = dbHelper.getBookingsByUsername(username);
-        }
-
+        bookingList = new java.util.ArrayList<>();
         adapter = new MyBookingsAdapter(requireContext(), bookingList);
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (dbHelper != null && recyclerView != null) {
+            if ("Staff".equals(userType)) {
+                bookingList = dbHelper.getAllBookings();
+            } else {
+                bookingList = dbHelper.getBookingsByUsername(username);
+            }
+            adapter = new MyBookingsAdapter(requireContext(), bookingList);
+            recyclerView.setAdapter(adapter);
+        }
     }
 }

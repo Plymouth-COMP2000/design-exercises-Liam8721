@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.comp2000.database.Booking;
@@ -42,8 +43,14 @@ public class staff_reservations extends Fragment {
         dbHelper = new BookingDBHelper(getContext());
 
         ImageButton backButton = view.findViewById(R.id.staffReservationsBackButton);
+        Button createBookingButton = view.findViewById(R.id.staffCreateBookingButton);
+
         backButton.setOnClickListener(v -> {
             Navigation.findNavController(v).navigateUp();
+        });
+
+        createBookingButton.setOnClickListener(v -> {
+            Navigation.findNavController(v).navigate(R.id.action_staff_reservations_to_staffMakeBooking);
         });
 
         recyclerView = view.findViewById(R.id.staffRecyclerViewBookings);
