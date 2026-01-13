@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -63,6 +64,7 @@ public class GuestMakeBooking extends Fragment {
         Spinner spinnerGuestMakeBookingPartySize = view.findViewById(R.id.GuestMakeBookingPartySize);
         Spinner spinnerGuestMakeBookingTime = view.findViewById(R.id.GuestMakeBookingTime);
         Button searchButton = view.findViewById(R.id.GuestMakeBookingSearchButton);
+        EditText notesEditText = view.findViewById(R.id.GuestMakeBookingNotes);
 
         guestMakeBookingBackIC.setOnClickListener(v -> {
             Navigation.findNavController(v).navigate(R.id.action_guestMakeBooking_to_guestHome);
@@ -76,6 +78,7 @@ public class GuestMakeBooking extends Fragment {
             String date = spinnerGuestMakeBookingDate.getSelectedItem().toString();
             String time = spinnerGuestMakeBookingTime.getSelectedItem().toString();
             String partySizeString = spinnerGuestMakeBookingPartySize.getSelectedItem().toString();
+            String notes = notesEditText.getText().toString();
 
             int partySize = Integer.parseInt(partySizeString.replaceAll("[^0-9]", ""));
 
@@ -86,7 +89,7 @@ public class GuestMakeBooking extends Fragment {
                     fullName,
                     username,
                     email,
-                    "" // notes
+                    notes
             );
 
             boolean success = dbHelper.addBooking(newBooking);
