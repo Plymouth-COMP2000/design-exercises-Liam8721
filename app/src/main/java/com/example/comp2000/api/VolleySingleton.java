@@ -55,4 +55,12 @@ public class VolleySingleton {
         JsonObjectRequest req = new JsonObjectRequest(Request.Method.POST, url, null, callback, errorCallback);
         getInstance(ctx).getRequestQueue().add(req);
     }
+
+    public static void deleteUser(Context ctx, String username,
+                                  Response.Listener<JSONObject> callback,
+                                  Response.ErrorListener errorCallback) {
+        String url = String.format(Locale.getDefault(), "%s/delete_user/%s/%s", BASE_URL, STUDENT_ID, username);
+        JsonObjectRequest req = new JsonObjectRequest(Request.Method.DELETE, url, null, callback, errorCallback);
+        getInstance(ctx).getRequestQueue().add(req);
+    }
 }
