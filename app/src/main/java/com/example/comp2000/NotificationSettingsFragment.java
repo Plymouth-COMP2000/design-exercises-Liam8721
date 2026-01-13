@@ -19,9 +19,11 @@ import android.widget.Switch;
 public class NotificationSettingsFragment extends Fragment {
 
     private SharedPreferences prefs;
+    private SharedPreferences userPrefs;
     private Switch bookingCreatedToggle;
     private Switch bookingUpdatedToggle;
     private Switch bookingCancelledToggle;
+    private String currentUsername;
 
     public NotificationSettingsFragment() {
     }
@@ -30,6 +32,10 @@ public class NotificationSettingsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         prefs = requireContext().getSharedPreferences("UserSettings", Context.MODE_PRIVATE);
+        userPrefs = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
+
+        // Get the currently logged-in username
+        currentUsername = userPrefs.getString("logged_in_user", "default_user");
     }
 
     @Override
@@ -76,15 +82,20 @@ public class NotificationSettingsFragment extends Fragment {
     }
 
     private void loadNotificationSettings() {
-        bookingCreatedToggle.setChecked(prefs.getBoolean("alerts_booking_created", true));
-        bookingUpdatedToggle.setChecked(prefs.getBoolean("alerts_booking_updated", true));
-        bookingCancelledToggle.setChecked(prefs.getBoolean("alerts_booking_cancelled", true));
+        // Load per-user notification preferences
+        bookingCreatedToggle.setChecked(prefs.getBoolean(currentUsername + "_alerts_booking_created", true));
+        bookingUpdatedToggle.setChecked(prefs.getBoolean(currentUsername + "_alerts_booking_updated", true));
+        bookingCancelledToggle.setChecked(prefs.getBoolean(currentUsername + "_alerts_booking_cancelled", true));
     }
 
     private void saveNotificationSetting(String key, boolean value) {
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putBoolean(key, value);
+        // Save with user-specific key
+        editor.putBoolean(currentUsername + "_" + key, value);
         editor.apply();
     }
 }
+
+
+
 

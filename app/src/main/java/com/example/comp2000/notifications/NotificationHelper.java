@@ -40,20 +40,25 @@ public class NotificationHelper {
     public static void pushAlert(Context appContext, String titleText, String bodyText, String categoryTag) {
 
         SharedPreferences prefs = appContext.getSharedPreferences("UserSettings", Context.MODE_PRIVATE);
+        SharedPreferences userPrefs = appContext.getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
+
+        // Get the currently logged-in username
+        String currentUsername = userPrefs.getString("logged_in_user", "default_user");
+
         boolean allowed = true;
 
         if ("booking".equals(categoryTag)) {
             if (titleText.contains("Created")) {
-                allowed = prefs.getBoolean("alerts_booking_created", true);
+                allowed = prefs.getBoolean(currentUsername + "_alerts_booking_created", true);
             } else if (titleText.contains("Updated")) {
-                allowed = prefs.getBoolean("alerts_booking_updated", true);
+                allowed = prefs.getBoolean(currentUsername + "_alerts_booking_updated", true);
             } else if (titleText.contains("Cancelled")) {
-                allowed = prefs.getBoolean("alerts_booking_cancelled", true);
+                allowed = prefs.getBoolean(currentUsername + "_alerts_booking_cancelled", true);
             }
         } else if ("orders".equals(categoryTag)) {
-            allowed = prefs.getBoolean("alerts_orders", true);
+            allowed = prefs.getBoolean(currentUsername + "_alerts_orders", true);
         } else if ("products".equals(categoryTag)) {
-            allowed = prefs.getBoolean("alerts_products", true);
+            allowed = prefs.getBoolean(currentUsername + "_alerts_products", true);
         }
 
         if (!allowed) return;
