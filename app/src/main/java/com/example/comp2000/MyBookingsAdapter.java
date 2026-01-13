@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.comp2000.database.Booking;
 import com.example.comp2000.database.BookingDBHelper;
+import com.example.comp2000.notifications.NotificationHelper;
 
 import android.app.AlertDialog;
 import android.text.InputType;
@@ -26,9 +27,11 @@ public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.Vi
 
     private final List<Booking> bookingList;
     private final BookingDBHelper dbHelper;
+    private final Context context;
 
     public MyBookingsAdapter(Context context, List<Booking> bookingList) {
         this.bookingList = bookingList;
+        this.context = context;
         this.dbHelper = new BookingDBHelper(context.getApplicationContext());
     }
 
@@ -62,6 +65,13 @@ public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.Vi
                     .setMessage("Are you sure you want to cancel this booking?")
                     .setPositiveButton("Cancel booking", (dialog, which) -> {
                         dbHelper.deleteBooking(booking.getId());
+
+                        NotificationHelper.pushAlert(
+                                context,
+                                "Booking Cancelled",
+                                "Your booking for " + booking.getDate() + " at " + booking.getTime() + " has been cancelled.",
+                                "booking"
+                        );
 
                         int adapterPos = holder.getAdapterPosition();
                         if (adapterPos != RecyclerView.NO_POSITION) {
@@ -133,6 +143,13 @@ public class MyBookingsAdapter extends RecyclerView.Adapter<MyBookingsAdapter.Vi
                     booking.setNotes(notesET.getText().toString().trim());
 
                     dbHelper.updateBooking(booking);
+
+                    NotificationHelper.pushAlert(
+                            context,
+                            "Booking Updated",
+                            "Your booking for " + booking.getDate() + " at " + booking.getTime() + " has been updated.",
+                            "booking"
+                    );
 
                     if (adapterPos != RecyclerView.NO_POSITION) {
                         notifyItemChanged(adapterPos);
