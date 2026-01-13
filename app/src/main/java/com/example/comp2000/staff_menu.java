@@ -55,6 +55,11 @@ public class staff_menu extends Fragment {
 
         categorySpinner = view.findViewById(R.id.categorySpinner);
 
+        ImageButton backButton = view.findViewById(R.id.staffMenuBackButton);
+        backButton.setOnClickListener(v -> {
+            NavHostFragment.findNavController(this).navigateUp();
+        });
+
         ImageButton addCategoryButton = view.findViewById(R.id.addCategoryButton);
         addCategoryButton.setOnClickListener(v -> showAddCategoryDialog());
 

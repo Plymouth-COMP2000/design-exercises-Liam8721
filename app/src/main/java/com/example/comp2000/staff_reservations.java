@@ -5,12 +5,14 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.example.comp2000.database.Booking;
 import com.example.comp2000.database.BookingDBHelper;
@@ -38,6 +40,11 @@ public class staff_reservations extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         dbHelper = new BookingDBHelper(getContext());
+
+        ImageButton backButton = view.findViewById(R.id.staffReservationsBackButton);
+        backButton.setOnClickListener(v -> {
+            Navigation.findNavController(v).navigateUp();
+        });
 
         recyclerView = view.findViewById(R.id.staffRecyclerViewBookings);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

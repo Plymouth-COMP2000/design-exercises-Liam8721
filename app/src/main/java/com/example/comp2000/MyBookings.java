@@ -57,7 +57,7 @@ public class MyBookings extends Fragment {
                 Navigation.findNavController(v).navigate(R.id.action_myBookings_to_guestHome)
         );
 
-        recyclerView = view.findViewById(R.id.recyclerViewBookings);
+        recyclerView = view.findViewById(R.id.myBookingsRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
 
         if ("Staff".equals(userType)) {
