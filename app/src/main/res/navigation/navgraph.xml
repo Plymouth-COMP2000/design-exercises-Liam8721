@@ -129,5 +129,11 @@
         android:id="@+id/notificationSettingsFragment"
         android:name="com.example.comp2000.NotificationSettingsFragment"
         android:label="fragment_notification_settings"
-        tools:layout="@layout/fragment_notification_settings" />
+        tools:layout="@layout/fragment_notification_settings" >
+        <action
+            android:id="@+id/action_notificationSettingsFragment_to_login"
+            app:destination="@id/login"
+            app:popUpTo="@id/login"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

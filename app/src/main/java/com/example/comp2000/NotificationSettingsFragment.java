@@ -12,6 +12,7 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Switch;
@@ -34,7 +35,6 @@ public class NotificationSettingsFragment extends Fragment {
         prefs = requireContext().getSharedPreferences("UserSettings", Context.MODE_PRIVATE);
         userPrefs = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
 
-        // Get the currently logged-in username
         currentUsername = userPrefs.getString("logged_in_user", "default_user");
     }
 
@@ -52,11 +52,16 @@ public class NotificationSettingsFragment extends Fragment {
         bookingCreatedToggle = view.findViewById(R.id.bookingCreatedToggle);
         bookingUpdatedToggle = view.findViewById(R.id.bookingUpdatedToggle);
         bookingCancelledToggle = view.findViewById(R.id.bookingCancelledToggle);
+        Button logoutButton = view.findViewById(R.id.logoutButton);
 
         loadNotificationSettings();
 
         backButton.setOnClickListener(v -> {
             Navigation.findNavController(v).navigateUp();
+        });
+
+        logoutButton.setOnClickListener(v -> {
+            performLogout();
         });
 
         bookingCreatedToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -82,7 +87,6 @@ public class NotificationSettingsFragment extends Fragment {
     }
 
     private void loadNotificationSettings() {
-        // Load per-user notification preferences
         bookingCreatedToggle.setChecked(prefs.getBoolean(currentUsername + "_alerts_booking_created", true));
         bookingUpdatedToggle.setChecked(prefs.getBoolean(currentUsername + "_alerts_booking_updated", true));
         bookingCancelledToggle.setChecked(prefs.getBoolean(currentUsername + "_alerts_booking_cancelled", true));
@@ -90,9 +94,18 @@ public class NotificationSettingsFragment extends Fragment {
 
     private void saveNotificationSetting(String key, boolean value) {
         SharedPreferences.Editor editor = prefs.edit();
-        // Save with user-specific key
         editor.putBoolean(currentUsername + "_" + key, value);
         editor.apply();
+    }
+
+    private void performLogout() {
+        SharedPreferences.Editor editor = userPrefs.edit();
+        editor.remove("logged_in_user");
+        editor.remove("user_email");
+        editor.remove("user_type");
+        editor.apply();
+
+        Navigation.findNavController(requireView()).navigate(R.id.action_notificationSettingsFragment_to_login);
     }
 }
 
