@@ -24,6 +24,9 @@ import android.content.SharedPreferences;
 import com.example.comp2000.database.Booking;
 import com.example.comp2000.database.BookingDBHelper;
 
+import com.example.comp2000.notifications.NotificationHelper;
+
+
 public class GuestMakeBooking extends Fragment {
 
     private BookingDBHelper dbHelper;
@@ -34,8 +37,9 @@ public class GuestMakeBooking extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dbHelper = new BookingDBHelper(getContext());
+        dbHelper = new BookingDBHelper(requireContext());
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -89,6 +93,14 @@ public class GuestMakeBooking extends Fragment {
 
             if (success) {
                 Toast.makeText(getContext(), "Booking request sent!", Toast.LENGTH_SHORT).show();
+
+                NotificationHelper.pushAlert(
+                        requireContext(),
+                        "Booking Created",
+                        "Your booking for " + date + " at " + time + " was added.",
+                        "booking"
+                );
+
                 Navigation.findNavController(v).navigate(R.id.action_guestMakeBooking_to_guestHome);
             } else {
                 Toast.makeText(getContext(), "Failed to make booking", Toast.LENGTH_SHORT).show();
